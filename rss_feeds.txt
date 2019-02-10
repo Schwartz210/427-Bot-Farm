@@ -37,4 +37,13 @@ http://feeds.washingtonpost.com/rss/rss_blogpost
 https://www.engadget.com/rss.xml
 http://feeds.mashable.com/Mashable
 https://www.theverge.com/rss/index.xml
+https://www.vox.com/rss/index.xml
+https://www.wired.com/feed/rss
+http://feeds.feedburner.com/TechCrunch/greentech
+http://feeds.feedburner.com/Techcrunch/europe
+https://www.timesofisrael.com/feed/
+https://www.chicagotribune.com/news/
+
+
+
 
