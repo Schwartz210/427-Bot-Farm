@@ -43,7 +43,10 @@ http://feeds.feedburner.com/TechCrunch/greentech
 http://feeds.feedburner.com/Techcrunch/europe
 https://www.timesofisrael.com/feed/
 https://www.chicagotribune.com/news/
-
-
-
+https://www.miamiherald.com/news/state/florida/?widgetName=rssfeed&widgetContentId=712015&getXmlFeed=true
+https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms
+https://timesofindia.indiatimes.com/rssfeeds/-2128839596.cms
+https://www.latimes.com/local/rss2.0.xml
+https://www.feedspot.com/infiniterss.php?q=site:https%3A%2F%2Fwww.nbcdfw.com%2Fnews%2Ftop-stories%2F%3Frss%3Dy%2Ffeed
+https://www.feedspot.com/infiniterss.php?q=site:http%3A%2F%2Fwww.fox4news.com%2Ffeeds%2FrssFeed%3FobfType%3DRSS_FEED%26siteId%3D200007
 
