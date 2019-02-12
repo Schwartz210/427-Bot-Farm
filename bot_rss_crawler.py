@@ -2,7 +2,9 @@ __author__ = 'Avi Schwartz, Schwartz210@gmail.com, AviSchwartzCoding.com'
 from random import choice
 from requests import get
 from time import sleep
+
 from feedparser import parse
+
 from bot_base_class import Bot
 from credits import bot_cred
 from database import RssDB
@@ -39,17 +41,12 @@ class RssCrawlerBot(Bot):
         self.set_credentials(new_credentials[0], new_credentials[1], new_credentials[2], new_credentials[3])
 
     def get_random_article(self):
-        """Reads all feeds, and retrives all articles, then chooses random one"""
-        all_articles = []
+        """Chooses random article"""
         rss_feed_list = self.read_file()
-        for record in rss_feed_list:
-            feed = parse(record)
-            for article in feed['entries']:
-                all_articles.append(article)
         while True:
-            if len(all_articles) == 0:
-                raise Exception('Zero articles from feeds...')
-            article = choice(all_articles)
+            record = choice(rss_feed_list)
+            feed = parse(record)
+            article = choice(feed['entries'])
             url = article['link']
             if not self.db.contains(url):
                 return article
