@@ -44,12 +44,15 @@ class RssCrawlerBot(Bot):
         """Chooses random article"""
         rss_feed_list = self.read_file()
         while True:
-            record = choice(rss_feed_list)
-            feed = parse(record)
-            article = choice(feed['entries'])
-            url = article['link']
-            if not self.db.contains(url):
-                return article
+            try:
+                record = choice(rss_feed_list)
+                feed = parse(record)
+                article = choice(feed['entries'])
+                url = article['link']
+                if not self.db.contains(url):
+                    return article
+            except:
+                return self.get_random_article()
 
     def act(self):
         """Public main sequence"""
@@ -57,10 +60,6 @@ class RssCrawlerBot(Bot):
             article = self.get_random_article()
             self.subreddit.submit(title=article['title'], url=article['link'])
             self.db.insert_into(article['link'])
+            print('Published:', article['title'], article['link'])
             self.reset_credentials()
             sleep(Bot.MINUTE * 3.5)
-
-
-
-
-
