@@ -57,7 +57,7 @@ class RssCrawlerBot(Bot):
                 if not self.db.contains(url):
                     return article
             except:
-                return self.get_random_article()
+                continue
 
     @logger
     def act(self):
