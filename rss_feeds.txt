@@ -50,3 +50,4 @@ https://www.latimes.com/local/rss2.0.xml
 https://www.feedspot.com/infiniterss.php?q=site:https%3A%2F%2Fwww.nbcdfw.com%2Fnews%2Ftop-stories%2F%3Frss%3Dy%2Ffeed
 https://www.feedspot.com/infiniterss.php?q=site:http%3A%2F%2Fwww.fox4news.com%2Ffeeds%2FrssFeed%3FobfType%3DRSS_FEED%26siteId%3D200007
 https://www.hellenicshippingnews.com/tag/top-stories/feed/
+http://www.globaltimes.cn/rss/outbrain.xml
