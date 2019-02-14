@@ -49,15 +49,15 @@ class RssCrawlerBot(Bot):
         """Chooses random article"""
         rss_feed_list = self.read_file()
         while True:
-            try:
-                record = choice(rss_feed_list)
-                feed = parse(record)
-                article = choice(feed['entries'])
-                url = article['link']
-                if not self.db.contains(url):
-                    return article
-            except:
-                continue
+            to_console(1, 'while loop iteration')
+            record = choice(rss_feed_list)
+            to_console(2, 'rss: ' + record)
+            feed = parse(record)
+            article = choice(feed['entries'])
+            url = article['link']
+            to_console(2, 'random article title: ' + article['title'])
+            if not self.db.contains(url):
+                return article
 
     @logger
     def act(self):
@@ -70,4 +70,4 @@ class RssCrawlerBot(Bot):
             to_console(2, article['title'])
             to_console(2, article['link'])
             self.reset_credentials()
-            sleep(Bot.MINUTE * 3.5)
+            sleep(Bot.MINUTE * 15)
