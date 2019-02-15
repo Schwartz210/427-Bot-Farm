@@ -46,16 +46,18 @@ class RssCrawlerBot(Bot):
 
     @logger
     def get_random_article(self):
-        """Chooses random article"""
+        """Reads all feeds, and retrives all articles, then chooses random one"""
+        all_articles = []
         rss_feed_list = self.read_file()
-        while True:
-            to_console(1, 'while loop iteration')
-            record = choice(rss_feed_list)
-            to_console(2, 'rss: ' + record)
+        for record in rss_feed_list:
             feed = parse(record)
-            article = choice(feed['entries'])
+            for article in feed['entries']:
+                all_articles.append(article)
+        while True:
+            if len(all_articles) == 0:
+                raise Exception('Zero articles from feeds...')
+            article = choice(all_articles)
             url = article['link']
-            to_console(2, 'random article title: ' + article['title'])
             if not self.db.contains(url):
                 return article
 
