@@ -50,3 +50,6 @@ http://www.globaltimes.cn/rss/outbrain.xml
 https://www.boston.com/tag/local-news/feed
 https://www.nbclosangeles.com/news/top-stories/?rss=y&embed&summary=y
 https://www.wvtm13.com/topstories-rss
+https://minnesota.cbslocal.com/category/news/local/feed/
+http://feeds.denverpost.com/dp-news-breaking
+https://www.nbcwashington.com/news/top-stories/?rss=y&summary=y
