@@ -43,7 +43,6 @@ class RssCrawlerBot(Bot):
         new_credentials = bot_cred[self.credential_iterator]
         self.set_credentials(new_credentials[0], new_credentials[1], new_credentials[2], new_credentials[3])
 
-    @logger
     def get_random_article(self):
         """Chooses random article"""
         rss_feed_list = self.read_file()
