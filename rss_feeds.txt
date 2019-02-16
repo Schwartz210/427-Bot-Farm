@@ -47,3 +47,6 @@ https://timesofindia.indiatimes.com/rssfeeds/-2128839596.cms
 https://www.latimes.com/local/rss2.0.xml
 https://www.hellenicshippingnews.com/tag/top-stories/feed/
 http://www.globaltimes.cn/rss/outbrain.xml
+https://www.boston.com/tag/local-news/feed
+https://www.nbclosangeles.com/news/top-stories/?rss=y&embed&summary=y
+https://www.wvtm13.com/topstories-rss
