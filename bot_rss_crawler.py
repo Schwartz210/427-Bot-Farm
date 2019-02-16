@@ -21,7 +21,8 @@ class RssCrawlerBot(Bot):
     def read_file(self):
         """Reads RSS Feed file and returns values delimited to list"""
         request = get('https://raw.githubusercontent.com/Schwartz210/427-Bot-Farm/master/rss_feeds.txt')
-        return request.text.split('\n')
+        requests = request.text.split('\n')
+        return [r for r in requests if len(r) != 0]
 
     @logger
     def print_feed(self):
@@ -29,7 +30,6 @@ class RssCrawlerBot(Bot):
         data = self.read_file()
         for record in data:
             feed = parse(record)
-            print(record)
             for entry in feed['entries']:
                 print(entry)
 
@@ -43,17 +43,24 @@ class RssCrawlerBot(Bot):
         new_credentials = bot_cred[self.credential_iterator]
         self.set_credentials(new_credentials[0], new_credentials[1], new_credentials[2], new_credentials[3])
 
+    @logger
     def get_random_article(self):
-        """Reads all feeds, and retrives all articles, then chooses random one"""
-        to_console(1, 'while loop iteration')
-        record = choice(rss_feed_list)
-        to_console(2, 'rss: ' + record)
-        feed = parse(record)
-        article = choice(feed['entries'])
-        url = article['link']
-        to_console(2, 'random article title: ' + article['title'])
-        if not self.db.contains(url):
-            return article
+        """Chooses random article"""
+        rss_feed_list = self.read_file()
+        while True:
+            to_console(1, 'while loop iteration')
+            record = choice(rss_feed_list)
+            to_console(2, 'rss: ' + record)
+            feed = parse(record)
+            try:
+                article = choice(feed['entries'])
+            except:
+                print('Bad feed', record)
+                exit()
+            url = article['link']
+            to_console(2, 'random article title: ' + article['title'])
+            if not self.db.contains(url):
+                return article
 
     @logger
     def act(self):
