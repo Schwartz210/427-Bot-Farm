@@ -24,7 +24,6 @@ http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
 http://rss.nytimes.com/services/xml/rss/nyt/World.xml
 http://rss.nytimes.com/services/xml/rss/nyt/US.xml
 http://rss.nytimes.com/services/xml/rss/nyt/Technology.xml
-https://www.npr.org/sections/world/
 http://feeds.reuters.com/Reuters/PoliticsNews
 http://feeds.reuters.com/reuters/scienceNews
 http://feeds.reuters.com/reuters/technologyNews
