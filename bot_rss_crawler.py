@@ -17,12 +17,15 @@ class RssCrawlerBot(Bot):
         Bot.__init__(self, first_credential[0], first_credential[1], first_credential[2], first_credential[3])
         self.credential_iterator = 0
         self.db = RssDB('database.db', 'articles')
+        self.rss_feed_list = []
+        self.article = None
 
+    @logger
     def read_file(self):
         """Reads RSS Feed file and returns values delimited to list"""
         request = get('https://raw.githubusercontent.com/Schwartz210/427-Bot-Farm/master/rss_feeds.txt')
         requests = request.text.split('\n')
-        return [r for r in requests if len(r) != 0]
+        self.rss_feed_list = [r for r in requests if len(r) != 0]
 
     @logger
     def print_feed(self):
@@ -43,33 +46,36 @@ class RssCrawlerBot(Bot):
         new_credentials = bot_cred[self.credential_iterator]
         self.set_credentials(new_credentials[0], new_credentials[1], new_credentials[2], new_credentials[3])
 
+    @logger
     def get_random_article(self):
         """Chooses random article"""
-        rss_feed_list = self.read_file()
+        self.read_file()
         while True:
             to_console(1, 'while loop iteration')
-            record = choice(rss_feed_list)
+            record = choice(self.rss_feed_list)
             to_console(2, 'rss: ' + record)
             feed = parse(record)
             try:
                 article = choice(feed['entries'])
             except:
-                print('Bad feed', record)
-                exit()
+                raise Exception('Bad feed', record)
             url = article['link']
             to_console(2, 'random article title: ' + article['title'])
             if not self.db.contains(url):
-                return article
+                self.article = article
+                return
 
     @logger
     def act(self):
         """Public main sequence"""
         while True:
-            article = self.get_random_article()
-            self.subreddit.submit(title=article['title'], url=article['link'])
-            self.db.insert_into(article['link'])
+            to_console(1, 'Starting article fetch..')
+            self.get_random_article()
+            self.subreddit.submit(title=self.article['title'], url=self.article['link'])
+            self.db.insert_into(self.article['link'])
             to_console(1, 'Published:')
-            to_console(2, article['title'])
-            to_console(2, article['link'])
+            to_console(2, self.article['title'])
+            to_console(2, self.article['link'])
             self.reset_credentials()
+            to_console(1, 'Entering sleep phase...')
             sleep(Bot.MINUTE * 15)
