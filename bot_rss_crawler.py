@@ -18,7 +18,6 @@ class RssCrawlerBot(Bot):
         self.credential_iterator = 0
         self.db = RssDB('database.db', 'articles')
 
-    @logger
     def read_file(self):
         """Reads RSS Feed file and returns values delimited to list"""
         request = get('https://raw.githubusercontent.com/Schwartz210/427-Bot-Farm/master/rss_feeds.txt')
@@ -44,22 +43,17 @@ class RssCrawlerBot(Bot):
         new_credentials = bot_cred[self.credential_iterator]
         self.set_credentials(new_credentials[0], new_credentials[1], new_credentials[2], new_credentials[3])
 
-    @logger
     def get_random_article(self):
         """Reads all feeds, and retrives all articles, then chooses random one"""
-        all_articles = []
-        rss_feed_list = self.read_file()
-        for record in rss_feed_list:
-            feed = parse(record)
-            for article in feed['entries']:
-                all_articles.append(article)
-        while True:
-            if len(all_articles) == 0:
-                raise Exception('Zero articles from feeds...')
-            article = choice(all_articles)
-            url = article['link']
-            if not self.db.contains(url):
-                return article
+        to_console(1, 'while loop iteration')
+        record = choice(rss_feed_list)
+        to_console(2, 'rss: ' + record)
+        feed = parse(record)
+        article = choice(feed['entries'])
+        url = article['link']
+        to_console(2, 'random article title: ' + article['title'])
+        if not self.db.contains(url):
+            return article
 
     @logger
     def act(self):
