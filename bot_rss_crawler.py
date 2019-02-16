@@ -1,7 +1,6 @@
 __author__ = 'Avi Schwartz, Schwartz210@gmail.com, AviSchwartzCoding.com'
 from random import choice
 from requests import get
-from time import sleep
 
 from feedparser import parse
 
@@ -12,7 +11,9 @@ from logger_thingy import logger, to_console
 
 
 class RssCrawlerBot(Bot):
-    def __init__(self):
+    def __init__(self, feed_file, wait_time):
+        self.feed_file = feed_file
+        self.wait_time = wait_time
         first_credential = bot_cred[0]
         Bot.__init__(self, first_credential[0], first_credential[1], first_credential[2], first_credential[3])
         self.credential_iterator = 0
@@ -23,7 +24,7 @@ class RssCrawlerBot(Bot):
     @logger
     def read_file(self):
         """Reads RSS Feed file and returns values delimited to list"""
-        request = get('https://raw.githubusercontent.com/Schwartz210/427-Bot-Farm/master/rss_feeds.txt')
+        request = get(self.feed_file)
         requests = request.text.split('\n')
         self.rss_feed_list = [r for r in requests if len(r) != 0]
 
@@ -78,4 +79,4 @@ class RssCrawlerBot(Bot):
             to_console(2, self.article['link'])
             self.reset_credentials()
             to_console(1, 'Entering sleep phase...')
-            sleep(Bot.MINUTE * 15)
+            self.wait(self.wait_time)
