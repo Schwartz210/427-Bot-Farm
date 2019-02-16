@@ -31,7 +31,7 @@ class Bot(object):
             sleep(1)
             seconds -= 1
             if seconds % 30 == 0:
-                to_console(2, 'Seconds left in sleep phase: ' + seconds)
+                to_console(2, 'Seconds left in sleep phase: ' + str(seconds))
 
     def act(self):
         """Abstract method gets implemented in children classes"""
