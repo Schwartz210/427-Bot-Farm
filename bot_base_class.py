@@ -9,7 +9,8 @@ class Bot(object):
     MINUTE = 60
     HOUR = MINUTE * 60
 
-    def __init__(self, user_name, password, client_id, client_secret):
+    def __init__(self, sub, user_name, password, client_id, client_secret):
+        self.sub = sub
         self.reddit = Reddit(user_agent='having fun',
                              username=user_name,
                              password=password,
