@@ -7,19 +7,19 @@ from feedparser import parse
 
 from bot_base_class import Bot
 from credits import bot_cred
-from database import RssDB
+from database import DB
 from logger_thingy import logger, to_console
-from update import execute
 
 
 class RssCrawlerBot(Bot):
-    def __init__(self, feed_file, wait_time):
+    def __init__(self, feed_file, wait_time, sub):
         self.feed_file = feed_file
         self.wait_time = wait_time
+        self.sub = sub
         first_credential = bot_cred[0]
-        Bot.__init__(self, first_credential[0], first_credential[1], first_credential[2], first_credential[3])
+        Bot.__init__(self, sub, first_credential[0], first_credential[1], first_credential[2], first_credential[3])
         self.credential_iterator = 0
-        self.db = RssDB('database.db', 'articles')
+        self.db = DB('database.db', 'articles5')
         self.rss_feed_list = []
         self.article = None
         self.read_file()
@@ -64,27 +64,25 @@ class RssCrawlerBot(Bot):
                 raise Exception('Bad feed', record)
             url = article['link']
             to_console(2, 'random article title: ' + article['title'])
-            if not self.db.contains(url):
+            if not self.db.contains(self.sub, url):
                 self.article = article
                 return
 
     @logger
     def sleep_phase(self):
-        execute()
         self.read_file()
 
     @logger
     def act(self):
         """Public main sequence"""
-        while True:
-            to_console(1, 'Starting article fetch..')
-            self.get_random_article()
-            self.subreddit.submit(title=self.article['title'], url=self.article['link'])
-            self.db.insert_into(self.article['link'])
-            to_console(1, 'Published:')
-            to_console(2, self.article['title'])
-            to_console(2, self.article['link'])
-            self.reset_credentials()
-            to_console(1, 'Entering sleep phase...')
-            start_new_thread(self.sleep_phase, ())
-            self.wait(self.wait_time)
+        to_console(1, 'Starting article fetch..')
+        self.get_random_article()
+        self.subreddit.submit(title=self.article['title'], url=self.article['link'])
+        self.db.insert_into(self.sub, self.article['link'])
+        to_console(1, 'Published:')
+        to_console(2, self.article['title'])
+        to_console(2, self.article['link'])
+        self.reset_credentials()
+        to_console(1, 'Entering sleep phase...')
+        start_new_thread(self.sleep_phase, ())
+        self.wait(self.wait_time)
