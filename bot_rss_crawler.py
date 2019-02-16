@@ -1,6 +1,7 @@
 __author__ = 'Avi Schwartz, Schwartz210@gmail.com, AviSchwartzCoding.com'
 from random import choice
 from requests import get
+from _thread import start_new_thread
 
 from feedparser import parse
 
@@ -8,6 +9,7 @@ from bot_base_class import Bot
 from credits import bot_cred
 from database import RssDB
 from logger_thingy import logger, to_console
+from update import execute
 
 
 class RssCrawlerBot(Bot):
@@ -20,6 +22,7 @@ class RssCrawlerBot(Bot):
         self.db = RssDB('database.db', 'articles')
         self.rss_feed_list = []
         self.article = None
+        self.read_file()
 
     @logger
     def read_file(self):
@@ -50,7 +53,6 @@ class RssCrawlerBot(Bot):
     @logger
     def get_random_article(self):
         """Chooses random article"""
-        self.read_file()
         while True:
             to_console(1, 'while loop iteration')
             record = choice(self.rss_feed_list)
@@ -67,6 +69,11 @@ class RssCrawlerBot(Bot):
                 return
 
     @logger
+    def sleep_phase(self):
+        execute()
+        self.read_file()
+
+    @logger
     def act(self):
         """Public main sequence"""
         while True:
@@ -79,4 +86,5 @@ class RssCrawlerBot(Bot):
             to_console(2, self.article['link'])
             self.reset_credentials()
             to_console(1, 'Entering sleep phase...')
+            start_new_thread(self.sleep_phase, ())
             self.wait(self.wait_time)
