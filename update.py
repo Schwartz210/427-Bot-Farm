@@ -5,7 +5,8 @@ FILES = {
     'go.py': 'https://raw.githubusercontent.com/Schwartz210/427-Bot-Farm/master/__init__.py',
     'logger_thingy.py': 'https://raw.githubusercontent.com/Schwartz210/427-Bot-Farm/master/logger_thingy.py',
     'database.py': 'https://raw.githubusercontent.com/Schwartz210/427-Bot-Farm/master/database.py',
-    'update.py': 'https://raw.githubusercontent.com/Schwartz210/427-Bot-Farm/master/update.py'
+    'update.py': 'https://raw.githubusercontent.com/Schwartz210/427-Bot-Farm/master/update.py',
+    'bot_base_class.py': 'https://raw.githubusercontent.com/Schwartz210/427-Bot-Farm/master/bot_base_class.py'
 }
 
 
