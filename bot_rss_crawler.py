@@ -53,7 +53,7 @@ class RssCrawlerBot(Bot):
                 choice(feed['entries'])
             except:
                 bad_feeds.append(record)
-        if len(self.rss_feed_list) > 0:
+        if len(bad_feeds) > 0:
             raise Exception('Bad feeds:', bad_feeds)
     
     @logger
