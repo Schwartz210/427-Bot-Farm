@@ -40,7 +40,6 @@ https://www.wired.com/feed/rss
 http://feeds.feedburner.com/TechCrunch/greentech
 http://feeds.feedburner.com/Techcrunch/europe
 https://www.timesofisrael.com/feed/
-https://www.chicagotribune.com/news/
 https://www.miamiherald.com/news/state/florida/?widgetName=rssfeed&widgetContentId=712015&getXmlFeed=true
 https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms
 https://timesofindia.indiatimes.com/rssfeeds/-2128839596.cms
