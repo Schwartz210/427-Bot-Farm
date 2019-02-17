@@ -22,7 +22,10 @@ class RssCrawlerBot(Bot):
         self.db = DB('database.db', 'articles5')
         self.rss_feed_list = []
         self.article = None
+        self.validate_all_feeds()
+        to_console(1, 'Starting article fetch..')
         self.read_file()
+        self.get_random_article()
 
     @logger
     def read_file(self):
@@ -41,15 +44,18 @@ class RssCrawlerBot(Bot):
                 print(entry)
 
     @logger
-    def reset_credentials(self):
-        """Changes bot credentials to circumvent API posting frequency limits. A bot can only post an article
-        every 10 min"""
-        self.credential_iterator += 1
-        if self.credential_iterator == len(bot_cred):
-            self.credential_iterator = 0
-        new_credentials = bot_cred[self.credential_iterator]
-        self.set_credentials(new_credentials[0], new_credentials[1], new_credentials[2], new_credentials[3])
-
+    def validate_all_feeds(self):
+        """Tests all feeds upon startup"""
+        bad_feeds = []
+        for record in self.rss_feed_list:
+            feed = parse(record)
+            try:
+                choice(feed['entries'])
+            except:
+                bad_feeds.append(record)
+        if len(self.rss_feed_list) > 0:
+            raise Exception('Bad feeds:', bad_feeds)
+    
     @logger
     def get_random_article(self):
         """Chooses random article"""
@@ -70,19 +76,18 @@ class RssCrawlerBot(Bot):
 
     @logger
     def sleep_phase(self):
+        to_console(1, 'Starting article fetch..')
         self.read_file()
+        self.get_random_article()
 
     @logger
     def act(self):
         """Public main sequence"""
-        to_console(1, 'Starting article fetch..')
-        self.get_random_article()
         self.subreddit.submit(title=self.article['title'], url=self.article['link'])
         self.db.insert_into(self.sub, self.article['link'])
         to_console(1, 'Published:')
         to_console(2, self.article['title'])
         to_console(2, self.article['link'])
-        self.reset_credentials()
         to_console(1, 'Entering sleep phase...')
         start_new_thread(self.sleep_phase, ())
         self.wait(self.wait_time)
