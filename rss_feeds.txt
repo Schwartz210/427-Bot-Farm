@@ -52,3 +52,8 @@ https://www.wvtm13.com/topstories-rss
 https://minnesota.cbslocal.com/category/news/local/feed/
 http://feeds.denverpost.com/dp-news-breaking
 https://www.nbcwashington.com/news/top-stories/?rss=y&summary=y
+https://www.theledger.com/news/local?template=rss&mime=xml
+https://rss.nzherald.co.nz/rss/xml/nzhtsrsscid_000000698.xml
+https://www.japantimes.co.jp/feed/topstories/
+https://www.nhregister.com/default/feed/News-RSS-1670.php
+http://www.fox5atlanta.com/feeds/rssFeed?obfType=VERVE_RSS_FEED&siteId=200003&categoryId=100000
