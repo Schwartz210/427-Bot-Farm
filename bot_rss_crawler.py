@@ -61,7 +61,7 @@ class RssCrawlerBot(Bot):
         to_console(1, 'Starting article fetch..')
         rss_feed_list = self.get_rss_feed_list()
         article = self.get_random_article(rss_feed_list)
-        text = article['title'] + '||' + article['url']
+        text = article['title'] + '||' + article['link']
         file = open(self.next_article_file, 'w')
         file.write(text)
         file.close()
@@ -76,5 +76,4 @@ class RssCrawlerBot(Bot):
         to_console(1, 'Published:')
         to_console(2, title)
         to_console(2, link)
-        to_console(1, 'Entering sleep phase...')
 
