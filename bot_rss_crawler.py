@@ -32,7 +32,7 @@ class RssCrawlerBot(Bot):
     def validate_all_feeds(self):
         """Tests all feeds upon startup"""
         bad_feeds = []
-        for record in self.rss_feed_list:
+        for record in self.get_rss_feed_list():
             feed = parse(record)
             try:
                 choice(feed['entries'])
