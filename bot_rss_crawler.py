@@ -21,7 +21,6 @@ class RssCrawlerBot(Bot):
         self.validate_all_feeds()
         self.set_next_article()
 
-    @logger
     def get_rss_feed_list(self):
         """Reads RSS Feed file and returns values delimited to list"""
         request = get(self.feed_file)
@@ -41,7 +40,6 @@ class RssCrawlerBot(Bot):
         if len(bad_feeds) > 0:
             raise Exception('Bad feeds:', bad_feeds)
 
-    @logger
     def get_random_article(self, rss_feed_list):
         """Chooses random article"""
         while True:
