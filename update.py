@@ -6,7 +6,8 @@ FILES = {
     'logger_thingy.py': 'https://raw.githubusercontent.com/Schwartz210/427-Bot-Farm/master/logger_thingy.py',
     'database.py': 'https://raw.githubusercontent.com/Schwartz210/427-Bot-Farm/master/database.py',
     'update.py': 'https://raw.githubusercontent.com/Schwartz210/427-Bot-Farm/master/update.py',
-    'bot_base_class.py': 'https://raw.githubusercontent.com/Schwartz210/427-Bot-Farm/master/bot_base_class.py'
+    'bot_base_class.py': 'https://raw.githubusercontent.com/Schwartz210/427-Bot-Farm/master/bot_base_class.py',
+    'set_next_article.py': 'https://raw.githubusercontent.com/Schwartz210/427-Bot-Farm/master/set_next_article.py'
 }
 
 
@@ -20,7 +21,7 @@ def update_file(url, filename):
     file.close()
 
 
-def update_local_source_code():
+def execute():
     """Executes script"""
     for filename in FILES.keys():
         url = FILES[filename]
@@ -28,4 +29,4 @@ def update_local_source_code():
         print('updated:', filename)
 
 
-
+execute()
