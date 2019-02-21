@@ -19,7 +19,6 @@ class RssCrawlerBot(Bot):
         self.next_article_file = 'next_article.txt'
         self.db = DB('database.db', 'articles5')
         self.validate_all_feeds()
-        self.set_next_article()
 
     def get_rss_feed_list(self):
         """Reads RSS Feed file and returns values delimited to list"""
