@@ -58,3 +58,4 @@ https://www.japantimes.co.jp/feed/topstories/
 https://www.nhregister.com/default/feed/News-RSS-1670.php
 http://www.fox5atlanta.com/feeds/rssFeed?obfType=VERVE_RSS_FEED&siteId=200003&categoryId=100000
 https://www.smh.com.au/rss/national.xml
+http://www.koreatimes.co.kr/www/rss/nation.xml
