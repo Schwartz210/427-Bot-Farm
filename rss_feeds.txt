@@ -60,3 +60,5 @@ http://www.fox5atlanta.com/feeds/rssFeed?obfType=VERVE_RSS_FEED&siteId=200003&ca
 https://www.smh.com.au/rss/national.xml
 http://www.koreatimes.co.kr/www/rss/nation.xml
 https://www.wvtm13.com/topstories-rss
+https://timesofsandiego.com/feed/
+
