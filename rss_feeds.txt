@@ -63,4 +63,4 @@ https://www.wvtm13.com/topstories-rss
 https://timesofsandiego.com/feed/
 https://www.krqe.com/content-syndication-portlet/feedServlet?obfType=RSS_NSFEED&siteId=900028&categoryId=901190
 http://rssfeeds.tennessean.com/nashville/home
-
+https://www.dispatch.com/news/local?template=rss&mime=xml
