@@ -61,4 +61,4 @@ https://www.smh.com.au/rss/national.xml
 http://www.koreatimes.co.kr/www/rss/nation.xml
 https://www.wvtm13.com/topstories-rss
 https://timesofsandiego.com/feed/
-
+https://www.krqe.com/content-syndication-portlet/feedServlet?obfType=RSS_NSFEED&siteId=900028&categoryId=901190
