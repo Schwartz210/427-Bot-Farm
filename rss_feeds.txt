@@ -66,3 +66,6 @@ http://rssfeeds.tennessean.com/nashville/home
 https://www.dispatch.com/news/local?template=rss&mime=xml
 https://chicago.cbslocal.com/feed/
 https://www.nbcbayarea.com/news/local/?rss=y&embedThumb=y&summary=y
+http://www.wral.com/news/rss/142/
+atlanta.cbslocal.com/feed
+
