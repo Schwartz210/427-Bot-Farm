@@ -68,4 +68,4 @@ https://chicago.cbslocal.com/feed/
 https://www.nbcbayarea.com/news/local/?rss=y&embedThumb=y&summary=y
 http://www.wral.com/news/rss/142/
 atlanta.cbslocal.com/feed
-
+https://www.krmg.com/news/state--regional/state-and-regional-news/TSi8xC5iCG0f8jdorcyXIJ/rss/
