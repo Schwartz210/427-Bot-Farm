@@ -71,3 +71,5 @@ atlanta.cbslocal.com/feed
 https://www.krmg.com/news/state--regional/state-and-regional-news/TSi8xC5iCG0f8jdorcyXIJ/rss/
 http://www.baynews9.com/services/contentfeed.fl%7Ctampa.hero.rss
 https://www.seattletimes.com/northwest/feed/
+https://rss.cbc.ca/lineup/canada.xml
+
