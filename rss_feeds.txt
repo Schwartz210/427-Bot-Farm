@@ -74,4 +74,4 @@ https://www.seattletimes.com/northwest/feed/
 https://rss.cbc.ca/lineup/canada.xml
 https://www.japantimes.co.jp/feed/topstories/
 https://www.theherald.com.au/rss.xml
-
+https://www.cyberscoop.com/feed
