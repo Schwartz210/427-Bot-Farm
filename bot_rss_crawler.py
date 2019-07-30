@@ -8,6 +8,7 @@ from bot_base_class import Bot
 from credits import bot_cred
 from database import DB
 from logger_thingy import logger, to_console
+from gg import out
 
 
 class RssCrawlerBot(Bot):
@@ -17,8 +18,7 @@ class RssCrawlerBot(Bot):
         first_credential = bot_cred[0]
         Bot.__init__(self, sub, first_credential[0], first_credential[1], first_credential[2], first_credential[3])
         self.next_article_file = 'next_article.txt'
-        self.db = DB('database.db', 'articles5')
-        self.validate_all_feeds()
+        self.db = DB('/home/pi/Desktop/database.db', 'articles5')
 
     def get_rss_feed_list(self):
         """Reads RSS Feed file and returns values delimited to list"""
@@ -26,7 +26,6 @@ class RssCrawlerBot(Bot):
         requests = request.text.split('\n')
         return [r for r in requests if len(r) != 0]
 
-    @logger
     def validate_all_feeds(self):
         """Tests all feeds upon startup"""
         bad_feeds = []
@@ -42,20 +41,28 @@ class RssCrawlerBot(Bot):
     def get_random_article(self, rss_feed_list):
         """Chooses random article"""
         while True:
-            to_console(1, 'while loop iteration')
+            out('while loop iteration')
             record = choice(rss_feed_list)
+            out(record)
             to_console(2, 'rss: ' + record)
             feed = parse(record)
+            out('feed var')
             try:
                 article = choice(feed['entries'])
+                out('exception not triggered')
             except:
+                out('exception triggered')
+                with open('/home/pi/Desktop/bad feeds.txt', 'a') as file:
+                    file.write(record + '\n')
                 raise Exception('Bad feed', record)
             url = article['link']
+            out(url)
             to_console(2, 'random article title: ' + article['title'])
+            out('after to_console')
             if not self.db.contains(self.sub, url):
+                out('DB does not contain')
                 return article
 
-    @logger
     def set_next_article(self):
         """Prepares next article"""
         to_console(1, 'Starting article fetch..')
@@ -66,14 +73,16 @@ class RssCrawlerBot(Bot):
         file.write(text)
         file.close()
 
-    @logger
     def post(self):
         """Public main sequence"""
-        article = open(self.next_article_file, 'r')
-        title, link = article.read().strip('\n').split('||')
+        rss_feed_list = self.get_rss_feed_list()
+        article = self.get_random_article(rss_feed_list)
+        title = article['title']
+        link = article['link']
         self.subreddit.submit(title=title, url=link)
         self.db.insert_into(self.sub, link)
         to_console(1, 'Published:')
         to_console(2, title)
         to_console(2, link)
+        out('post method')
 
