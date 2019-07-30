@@ -17,7 +17,6 @@ class RssCrawlerBot(Bot):
         self.sub = sub
         first_credential = bot_cred[0]
         Bot.__init__(self, sub, first_credential[0], first_credential[1], first_credential[2], first_credential[3])
-        self.next_article_file = 'next_article.txt'
         self.db = DB('/home/pi/Desktop/database.db', 'articles5')
 
     def get_rss_feed_list(self):
@@ -54,7 +53,7 @@ class RssCrawlerBot(Bot):
                 out('exception triggered')
                 with open('/home/pi/Desktop/bad feeds.txt', 'a') as file:
                     file.write(record + '\n')
-                raise Exception('Bad feed', record)
+                continue
             url = article['link']
             out(url)
             to_console(2, 'random article title: ' + article['title'])
@@ -62,16 +61,6 @@ class RssCrawlerBot(Bot):
             if not self.db.contains(self.sub, url):
                 out('DB does not contain')
                 return article
-
-    def set_next_article(self):
-        """Prepares next article"""
-        to_console(1, 'Starting article fetch..')
-        rss_feed_list = self.get_rss_feed_list()
-        article = self.get_random_article(rss_feed_list)
-        text = article['title'] + '||' + article['link']
-        file = open(self.next_article_file, 'w')
-        file.write(text)
-        file.close()
 
     def post(self):
         """Public main sequence"""
