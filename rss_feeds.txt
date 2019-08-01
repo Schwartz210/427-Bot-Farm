@@ -61,13 +61,12 @@ https://www.smh.com.au/rss/national.xml
 http://www.koreatimes.co.kr/www/rss/nation.xml
 https://www.wvtm13.com/topstories-rss
 https://timesofsandiego.com/feed/
-https://www.krqe.com/content-syndication-portlet/feedServlet?obfType=RSS_NSFEED&siteId=900028&categoryId=901190
 http://rssfeeds.tennessean.com/nashville/home
 https://www.dispatch.com/news/local?template=rss&mime=xml
 https://chicago.cbslocal.com/feed/
 https://www.nbcbayarea.com/news/local/?rss=y&embedThumb=y&summary=y
 http://www.wral.com/news/rss/142/
-atlanta.cbslocal.com/feed
+http://www.atlanta.cbslocal.com/feed
 https://www.krmg.com/news/state--regional/state-and-regional-news/TSi8xC5iCG0f8jdorcyXIJ/rss/
 http://www.baynews9.com/services/contentfeed.fl%7Ctampa.hero.rss
 https://www.seattletimes.com/northwest/feed/
