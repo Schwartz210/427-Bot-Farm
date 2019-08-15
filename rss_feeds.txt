@@ -79,3 +79,5 @@ https://havanatimes.org/feed/
 https://news.usni.org/feed
 http://www.startribune.com/local/index.rss2
 https://www.canberratimes.com.au/rss.xml
+http://www.taipeitimes.com/xml/index.rss
+
