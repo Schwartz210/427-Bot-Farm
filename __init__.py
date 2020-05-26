@@ -3,9 +3,8 @@ from bot_rss_crawler import RssCrawlerBot
 
 def execute():
     """Starts 427_Bot_Farm"""
-    feed_list = 'https://raw.githubusercontent.com/Schwartz210/427-Bot-Farm/master/rss_feeds.txt'
-    bot = RssCrawlerBot(feed_list, 'rssbot')
-    bot.post()
+    bot = RssCrawlerBot('rssbot')
+    bot.test_feed()
 
 
 if __name__ == '__main__':

@@ -16,7 +16,7 @@ class Bot(object):
                              password=password,
                              client_id=client_id,
                              client_secret=client_secret)
-        self.subreddit = self.reddit.subreddit('rssbot')
+        self.subreddit = self.reddit.subreddit(self.sub)
 
     def set_credentials(self, user_name, password, client_id, client_secret):
         self.reddit = Reddit(user_agent='having fun',
@@ -24,7 +24,7 @@ class Bot(object):
                              password=password,
                              client_id=client_id,
                              client_secret=client_secret)
-        self.subreddit = self.reddit.subreddit('rssbot')
+        self.subreddit = self.reddit.subreddit(self.sub)
 
     def wait(self, seconds):
         """Produces cleen console output for waiting"""
