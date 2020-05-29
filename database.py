@@ -1,12 +1,12 @@
 from sqlite3 import connect
-
+from sys import stdout
 
 
 class DB(object):
-    FILE_ACTIVITY_LOG = 'database.db'
-    FILE_CONFIG = 'config.db'
+    PRODUCTION_DIR = '/home/pi/Desktop/'
+    FILE_ACTIVITY_LOG = PRODUCTION_DIR+'database.db'
+    FILE_CONFIG = PRODUCTION_DIR+'config.db'
     def __init__(self, file, table):
-        #self.FILE = '/home/pi/Desktop/database.db'
         self.FILE = file
         self.TABLE = table
 
@@ -52,6 +52,7 @@ class DB(object):
 
     @staticmethod
     def query_value(file, sql):
+        print(file+ ' - ' + sql)
         conn = connect(file)
         c = conn.cursor()
         data = list(c.execute(sql))
